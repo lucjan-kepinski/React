@@ -31,34 +31,39 @@ class TimersDashboard extends React.Component {
 }
 
 class EditableTimerList extends React.Component {
-render() {
-    const timers = this.props.timers.map((timer) => (
-    <EditableTimer
-    key={timer.id}
-    id={timer.id}
-    title={timer.title}
-    project={timer.project}
-    elapsed={timer.elapsed}
-    runningSince={timer.runningSince}
-    />
-));
-return (    
-<div id='timers'>
-{timers}
-</div>
-);
-}
+  render() {
+    const timers = this.props.timers.map(timer => (
+      <EditableTimer
+        key={timer.id}
+        id={timer.id}
+        title={timer.title}
+        project={timer.project}
+        elapsed={timer.elapsed}
+        runningSince={timer.runningSince}
+      />
+    ));
+    return <div id="timers">{timers}</div>;
+  }
 }
 
 class EditableTimer extends React.Component {
+  state = {
+    editFormOpen: false
+  };
+
   render() {
     if (this.props.editFormOpen) {
       return (
-        <TimerForm title={this.props.title} project={this.props.project} />
+        <TimerForm
+          id={this.props.id}
+          title={this.props.title}
+          project={this.props.project}
+        />
       );
     } else {
       return (
         <Timer
+          id={this.props.id}
           title={this.props.title}
           project={this.props.project}
           elapsed={this.props.elapsed}
@@ -96,13 +101,23 @@ class TimerForm extends React.Component {
 }
 
 class ToggleableTimerForm extends React.Component {
+  state = {
+    isOpen: false
+  };
+
+  handleFormOpen = () => {
+    this.setState({ isOpen: true });
+  };
   render() {
-    if (this.props.isOpen) {
+    if (this.state.isOpen) {
       return <TimerForm />;
     } else {
       return (
         <div className="ui basic content center aligned segment">
-          <button className="ui basic button icon">
+          <button
+            className="ui basic button icon"
+            onClick={this.handleFormOpen}
+          >
             <i className="plus icon" />
           </button>
         </div>
