@@ -117,7 +117,7 @@ class ToggleableTimerForm extends React.Component {
 
 class EditableTimerList extends React.Component {
   render() {
-    const timers = this.props.timers.map((timer) => (
+    const timers = this.props.timers.map(timer => (
       <EditableTimer
         key={timer.id}
         id={timer.id}
@@ -146,7 +146,7 @@ class EditableTimer extends React.Component {
     this.closeForm();
   };
 
-  handleSubmit = (timer) => {
+  handleSubmit = timer => {
     this.props.onFormSubmit(timer);
     this.closeForm();
   };
@@ -157,7 +157,7 @@ class EditableTimer extends React.Component {
 
   openForm = () => {
     this.setState({ editFormOpen: true });
-    console.log("lol")
+    console.log("lol");
   };
 
   render() {
@@ -188,12 +188,23 @@ class EditableTimer extends React.Component {
 }
 
 class Timer extends React.Component {
+  componentDidMount() {
+    this.forceUpdateInterval = setInterval(() => this.forceUpdate(), 50);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.forceUpdateInterval);
+  }
+
   handleTrashClick = () => {
     this.props.onTrashClick(this.props.id);
   };
 
   render() {
-    const elapsedString = helpers.renderElapsedString(this.props.elapsed);
+    const elapsedString = helpers.renderElapsedString(
+      this.props.elapsed,
+      this.props.runningSince
+    );
     return (
       <div className="ui centered card">
         <div className="content">
