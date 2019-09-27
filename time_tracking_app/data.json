@@ -1,13 +1,7 @@
 [
     {
-        "title": "Clear paper jam",
-        "project": "Office Choresw",
-        "elapsed": 1273998,
-        "id": "a73c1d19-f32d-4aff-b470-cea4e792406a"
-    },
-    {
-        "title": "Ponder origins of universe",
-        "project": "Life Chores",
+        "title": "wiosna",
+        "project": "lose calories",
         "id": "2c43306e-5b44-4ff8-8753-33c35adbd06f",
         "elapsed": 11750,
         "runningSince": 1456225941911
@@ -17,6 +11,13 @@
         "project": "x",
         "id": "dd94c31b-cb77-45c1-9d8d-2dd893c3e06a",
         "elapsed": 3080,
+        "runningSince": null
+    },
+    {
+        "title": "Clear paper jam",
+        "project": "Office Choresw",
+        "id": "a73c1d19-f32d-4aff-b470-cea4e792406a",
+        "elapsed": 0,
         "runningSince": null
     }
 ]
